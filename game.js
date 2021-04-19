@@ -7,16 +7,12 @@ const cells = []
 
 
 
-//! EDGE DETECTION
-
-
-
-
 
 //* Player starting position 
 let player = 389
 // //* Player projectile starting position is the same as players 
 let playerProjectile = player
+let aliens = [0, 1, 2, 3, 20, 21, 22 ,23, 40, 41, 42, 43]
 
 
 
@@ -36,24 +32,65 @@ for (let index = 0; index < width ** 2; index++) {
 
 //* Adds Player to the Grid
 cells[player].classList.add('player')
-//* Adds Alien to the Grid
-const one = 106
-const two = 107
-const three = 108
-const four = 109
-const five = 110
-const six = 111
-const seven = 112
-let superAlien = 0
+//* Adds Aliens to the Grid
+aliens.forEach(alien => {
+  cells[alien].classList.add('alien')
+})
 
-cells[one].classList.add('alien')
-cells[two].classList.add('alien')
-cells[three].classList.add('alien')
-cells[four].classList.add('alien')
-cells[five].classList.add('alien')
-cells[six].classList.add('alien')
-cells[seven].classList.add('alien')
-cells[superAlien].classList.add('alien')
+
+
+
+setInterval(() => {
+  for (let i = 0; i <= aliens.length - 1; i++){
+    cells[aliens[i]].classList.remove('alien')
+  }
+  for (let i = 0; i <= aliens.length - 1; i++){
+    aliens[i] +=1
+  }
+  for (let i = 0; i <= aliens.length - 1; i++){
+    cells[aliens[i]].classList.add('alien')
+  }
+},1000)
+
+
+
+
+
+//! Potential refracto
+// setInterval(() => {
+//   aliens.forEach((alien, index) => {
+//     cells[alien].classList.remove('alien')
+//     alien += 1
+    
+//     aliens[index] += 1
+    
+//     cells[alien].classList.add('alien')
+    
+    
+//   })
+// }, 1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //* Player movement and shoting
@@ -79,9 +116,6 @@ document.addEventListener('keydown', (event) => {
     bang()
   }
 })
-
-
-
 
 //* Player projectile code
 let bangInitiated = false
@@ -109,18 +143,13 @@ function bang() {
 
 
 
-
-
-const intervalID2 = setInterval(() => {
-  if (!cells[superAlien].classList.contains('projectile')) {
-    cells[superAlien].classList.remove('alien')
-    superAlien = superAlien + 1
-    cells[superAlien].classList.add('alien')
-  } else {
-    clearInterval(intervalID2)
-    cells[superAlien].classList.remove('alien')
-  }
-}, 1500)
-
-
-
+// const intervalID2 = setInterval(() => {
+//   if (!cells[superAlien].classList.contains('projectile')) {
+//     cells[superAlien].classList.remove('alien')
+//     superAlien = superAlien + 1
+//     cells[superAlien].classList.add('alien')
+//   } else {
+//     clearInterval(intervalID2)
+//     cells[superAlien].classList.remove('alien')
+//   }
+// }, 1500)
