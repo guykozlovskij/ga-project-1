@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
+  height: 1000px;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+/* .grid div {
+  width: 30%;
+  height: 30%;
+  border: 0.5px solid black;
+} */
+
+div {
+  font-size: 9px;
+}
+
+.player {
+  background-color: grey;
+}
+
+.projectile {
+  background-color: red;
+}
+
+.alien {
+  background-color: purple;
+  border:7px solid greenyellow;
+}
+
+.superAlien{
+  background-color: hotpink;
+}
