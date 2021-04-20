@@ -12,7 +12,7 @@ const cells = []
 let player = 389
 // //* Player projectile starting position is the same as players 
 let playerProjectile = player
-let aliens = [0, 1, 2, 3, 20, 21, 22 ,23, 40, 41, 42, 43]
+let aliens = [0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43]
 
 
 
@@ -40,100 +40,56 @@ aliens.forEach(alien => {
 
 
 
-setInterval(() => {
-  for (let i = 0; i <= aliens.length - 1; i++){
-    cells[aliens[i]].classList.remove('alien')
-  }
-  for (let i = 0; i <= aliens.length - 1; i++){
-    aliens[i] +=1
-  }
-  for (let i = 0; i <= aliens.length - 1; i++){
-    cells[aliens[i]].classList.add('alien')
-  }
-},1000)
-
-
-
-
-
-//! Potential refracto
-// setInterval(() => {
-//   aliens.forEach((alien, index) => {
-//     cells[alien].classList.remove('alien')
-//     alien += 1
-    
-//     aliens[index] += 1
-    
-//     cells[alien].classList.add('alien')
-    
-    
-//   })
-// }, 1000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //* Player movement and shoting
 document.addEventListener('keydown', (event) => {
   const key = event.key
 
-  //* Movement to the left
+  //? Movement to the left
   if (key === 'a' && !(player % width === 0)) {
     cells[player].classList.remove('player')
     player -= 1
     cells[player].classList.add('player')
   }
 
-  //* Movement to the rigth 
+  //? Movement to the rigth 
   if (key === 'd' && !(player % width === width - 1)) {
     cells[player].classList.remove('player')
     player += 1
     cells[player].classList.add('player')
   }
 
-  //* Projectile fire
+  //? Projectile fire
   if (key === 'w') {
     bang()
   }
 })
 
+
+
+
 //* Player projectile code
 let bangInitiated = false
 
+//? Allows only one projectile at a time on screen
 function bang() {
   if (bangInitiated === false) {
     bangInitiated = true
     playerProjectile = player
-
+    
+    //? Checks if no aliens ahead and moves projectile forward
     const intervalID = setInterval(() => {
       if (playerProjectile > 19 && !cells[playerProjectile].classList.contains('alien')) {
         cells[playerProjectile].classList.remove('projectile')
         playerProjectile -= 20
         cells[playerProjectile].classList.add('projectile')
       } else {
+
         cells[playerProjectile].classList.remove('projectile')
         cells[playerProjectile].classList.remove('alien')
-        playerProjectile = player
+        //? Updating the array upon impact with the projectile
+        aliens = aliens.filter((alien) => {
+          return alien !== playerProjectile
+        })
         clearInterval(intervalID)
         bangInitiated = false
       }
@@ -143,13 +99,34 @@ function bang() {
 
 
 
-// const intervalID2 = setInterval(() => {
-//   if (!cells[superAlien].classList.contains('projectile')) {
-//     cells[superAlien].classList.remove('alien')
-//     superAlien = superAlien + 1
-//     cells[superAlien].classList.add('alien')
-//   } else {
-//     clearInterval(intervalID2)
-//     cells[superAlien].classList.remove('alien')
-//   }
-// }, 1500)
+
+//* Alien movement 
+setInterval(() => {
+  for (let i = 0; i <= aliens.length - 1; i++) {
+    cells[aliens[i]].classList.remove('alien')
+  }
+  for (let i = 0; i <= aliens.length - 1; i++) {
+    aliens[i] += 1
+  }
+  for (let i = 0; i <= aliens.length - 1; i++) {
+    cells[aliens[i]].classList.add('alien')
+  }
+}, 1000)
+
+
+
+
+
+
+
+
+
+//? Potential refactor ?
+// setInterval(() => {
+//   aliens.forEach((alien, index) => {
+//     cells[alien].classList.remove('alien')
+//     alien += 1
+//     aliens[index] += 1
+//     cells[alien].classList.add('alien')
+//   })
+// }, 1000)
