@@ -1,18 +1,27 @@
 // * Game Grid element
 const grid = document.querySelector('.grid')
 //* Width of a row
-const width = 20
+const width = 23
 //* Array of cells
 const cells = []
+//* Initial alien movement direction set to left
+let direction = 1
 
 
+//* Score and lives tracker
+let score = 0
+const scoreTracker = document.querySelector('#score-tracker')
+let lives = 3
+const livesTracker = document.querySelector('#lives-tracker')
 
 
 //* Player starting position 
-let player = 389
+let player = 517
 // //* Player projectile starting position is the same as players 
 let playerProjectile = player
-let aliens = [0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43]
+//* Array of aliens
+let aliens = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150]
+
 
 
 
@@ -21,7 +30,7 @@ let aliens = [0, 1, 2, 3, 20, 21, 22, 23, 40, 41, 42, 43]
 for (let index = 0; index < width ** 2; index++) {
   const div = document.createElement('div')
   grid.appendChild(div)
-  div.innerHTML = index
+  // div.innerHTML = index
   div.style.width = `${100 / width}%`
   div.style.height = `${100 / width}%`
   cells.push(div)
@@ -75,15 +84,14 @@ function bang() {
   if (bangInitiated === false) {
     bangInitiated = true
     playerProjectile = player
-    
+
     //? Checks if no aliens ahead and moves projectile forward
     const intervalID = setInterval(() => {
       if (playerProjectile > 19 && !cells[playerProjectile].classList.contains('alien')) {
         cells[playerProjectile].classList.remove('projectile')
-        playerProjectile -= 20
+        playerProjectile -= width
         cells[playerProjectile].classList.add('projectile')
       } else {
-
         cells[playerProjectile].classList.remove('projectile')
         cells[playerProjectile].classList.remove('alien')
         //? Updating the array upon impact with the projectile
@@ -92,6 +100,8 @@ function bang() {
         })
         clearInterval(intervalID)
         bangInitiated = false
+        score += 100
+        scoreTracker.innerHTML = `Score: ${score}`
       }
     }, 30)
   }
@@ -100,33 +110,62 @@ function bang() {
 
 
 
-//* Alien movement 
+//* Alien movement
 setInterval(() => {
+
+  const leftWall = aliens[0] % width === 0
+  const rightWall = aliens[12] % width === width - 1
+
+  if ((leftWall && direction === - 1) || (rightWall && direction === 1)) {
+    direction = width
+  } else if (direction === width) {
+    if (leftWall) {
+      direction = 1
+    } else direction = -1
+  }
   for (let i = 0; i <= aliens.length - 1; i++) {
     cells[aliens[i]].classList.remove('alien')
   }
   for (let i = 0; i <= aliens.length - 1; i++) {
-    aliens[i] += 1
+    aliens[i] += direction
   }
   for (let i = 0; i <= aliens.length - 1; i++) {
     cells[aliens[i]].classList.add('alien')
   }
-}, 1000)
+}, 3000)//500
 
 
 
 
 
+//* Alines shoot every 1.5 seconds 
+setInterval(() => {
+  alienBang()
+}, 1500)
 
+let alienBangInitiated = false
 
+function alienBang() {
+  if (alienBangInitiated === false) {
+    alienBangInitiated = true
+    const alienProjectileIndex = Math.floor(Math.random() * aliens.length)
+    let alienProjectile = aliens[alienProjectileIndex]
 
+    const alienBangID = setInterval(() => {
 
-//? Potential refactor ?
-// setInterval(() => {
-//   aliens.forEach((alien, index) => {
-//     cells[alien].classList.remove('alien')
-//     alien += 1
-//     aliens[index] += 1
-//     cells[alien].classList.add('alien')
-//   })
-// }, 1000)
+      if (alienProjectile < 529) {
+        cells[alienProjectile].classList.remove('alien-projectile')
+        alienProjectile += width
+        cells[alienProjectile].classList.add('alien-projectile')
+        if (cells[player].classList.contains('alien-projectile')) {
+          lives -= 1
+          livesTracker.innerHTML = (`Lives: ${lives}`)
+        }
+      } else {
+        clearInterval(alienBangID)
+        alienBangInitiated = false
+
+      }
+    }, 50)
+  }
+}

@@ -14,7 +14,7 @@ body {
 .grid {
   display: flex;
   flex-direction: row;
-  width: 1000px;
+  width: 1300px;
   height: 1000px;
   flex-wrap: wrap;
   border: 1px solid black;
@@ -37,6 +37,11 @@ div {
 .projectile {
   background-color: red;
 }
+
+.alien-projectile {
+  background-color: orange;
+}
+
 
 .alien {
   background-color: purple;
