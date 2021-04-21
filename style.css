@@ -3,51 +3,83 @@
 }
 
 body {
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  background-color: black;
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 0;
 }
 
+
+h1 {
+  font-size: 60px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.title-card{
+  padding-left: 80px;
+}
+
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+
+#lives-tracker {
+  font-size: 40px;
+}
+
 .grid {
+  background-color: black;
   display: flex;
   flex-direction: row;
   width: 1300px;
   height: 1000px;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: 15px solid white;
 }
 
-/* .grid div {
+.grid div {
   width: 30%;
   height: 30%;
   border: 0.5px solid black;
-} */
+}
 
 div {
   font-size: 9px;
 }
 
 .player {
-  background-color: grey;
+  background-image: url('/img/ship.png');
+  background-size: contain;
+  background-position: center;
 }
 
 .projectile {
-  background-color: red;
+  background-image: url('/img/projectile.png');
+  background-size: contain;
+  background-position: center;
 }
 
 .alien-projectile {
-  background-color: orange;
+  background-image: url('/img/bomb.png');
+  background-size: contain;
+  background-position: center;
 }
-
 
 .alien {
-  background-color: purple;
-  border:7px solid greenyellow;
+  background-image: url('/img/alien.png');
+  background-size: contain;
+  background-position: center;
 }
 
-.superAlien{
+.superAlien {
   background-color: hotpink;
 }
