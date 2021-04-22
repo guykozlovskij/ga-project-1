@@ -3,6 +3,7 @@ let isGamePlaying = false
 
 
 
+
 // * Game Grid element
 const grid = document.querySelector('.grid')
 //* Width of a row
@@ -11,7 +12,6 @@ const width = 23
 const cells = []
 //* Initial alien movement direction set to left
 let direction = 1
-
 
 
 
@@ -29,7 +29,7 @@ startButton.addEventListener('click', () => {
 
 if (isGamePlaying === false) {
   startButton.innerHTML = 'Start Game'
-  document.getElementById('menu').style.border = '5px solid white'
+  document.getElementById('menu').style.border = '3px solid white'
   document.getElementById('menu').style.padding = '50px '
 }
 
@@ -50,17 +50,11 @@ function startGame() {
   const scoreTracker = document.querySelector('#score-tracker')
   let lives = 3
   const livesTracker = document.querySelector('#lives-tracker')
-
-
-
-
-  //! to be updated ------------------------------------------------------------------------
   const resultText = document.querySelector('#win-lose')
-  //! to be updated ------------------------------------------------------------------------
 
 
 
-  
+
   //* Player starting position 
   let player = 517
   // //* Player projectile starting position is the same as players 
@@ -75,7 +69,9 @@ function startGame() {
   for (let index = 0; index < width ** 2; index++) {
     const div = document.createElement('div')
     grid.appendChild(div)
+    //! to be updated ------------------------------------------------------------------------
     // div.innerHTML = index
+    //! to be updated ------------------------------------------------------------------------
     div.style.width = `${100 / width}%`
     div.style.height = `${100 / width}%`
     cells.push(div)
@@ -132,10 +128,15 @@ function startGame() {
 
       //? Checks if no aliens ahead and moves projectile forward
       const intervalID = setInterval(() => {
-        if (playerProjectile > 19 && !cells[playerProjectile].classList.contains('alien')) {
+        if (playerProjectile > 22 && !cells[playerProjectile].classList.contains('alien')) {
           cells[playerProjectile].classList.remove('projectile')
           playerProjectile -= width
           cells[playerProjectile].classList.add('projectile')
+          if (cells[playerProjectile].classList.contains('alien')) {
+            //? Updates the score
+            score += 10
+            scoreTracker.innerHTML = `Score: ${score}`
+          }
         } else {
           cells[playerProjectile].classList.remove('projectile')
           cells[playerProjectile].classList.remove('alien')
@@ -145,9 +146,7 @@ function startGame() {
           })
           clearInterval(intervalID)
           bangInitiated = false
-          //? Updates the score
-          score += 10
-          scoreTracker.innerHTML = `Score: ${score}`
+
         }
       }, 30)
     }
@@ -160,8 +159,8 @@ function startGame() {
   const alienMovementID = setInterval(() => {
 
     const leftWall = aliens[0] % width === 0
-    const rightWall = aliens[12] % width === width - 1
-    //! write out wall hit logic
+    const rightWall = aliens[aliens.length - 1] % width === width - 1
+
 
     if ((leftWall && direction === - 1) || (rightWall && direction === 1)) {
       direction = width
@@ -223,6 +222,7 @@ function startGame() {
 
 
 
+
     //* Winning - Loosing 
     const aliensLanded = aliens.some(alienID => alienID > 500)
 
@@ -232,13 +232,13 @@ function startGame() {
       clearInterval(alienShootID)
 
       startButton.innerHTML = 'You Lose!'
-      document.getElementById('menu').style.border = '5px solid white'
+      document.getElementById('menu').style.border = '3px solid white'
       document.getElementById('menu').style.padding = '50px '
       document.getElementById('menu').style.backgroundColor = 'black'
       startButton.addEventListener('click', () => {
         newGame()
       })
-      resultText.innerHTML = 'Click to play again.'
+      resultText.innerHTML = 'Click to PLAY again.'
       resultText.addEventListener('click', () => {
         newGame()
       })
@@ -252,7 +252,7 @@ function startGame() {
       startButton.addEventListener('click', () => {
         newGame()
       })
-      document.getElementById('menu').style.border = '5px solid white'
+      document.getElementById('menu').style.border = '3px solid white'
       document.getElementById('menu').style.padding = '50px '
       document.getElementById('menu').style.backgroundColor = 'black'
 

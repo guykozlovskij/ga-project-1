@@ -63,6 +63,8 @@ button {
 }
 
 #win-lose {
+  padding-top: 0px;
+  margin-top: 0px;
   font-size: 40px;
   color: rgb(0, 255, 0);
 }
