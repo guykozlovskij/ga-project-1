@@ -63,7 +63,8 @@ button {
 }
 
 #win-lose {
-  font-size: 30px;
+  font-size: 40px;
+  color: rgb(0, 255, 0);
 }
 
 .grid {

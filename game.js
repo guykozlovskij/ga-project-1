@@ -1,3 +1,8 @@
+//* Initial game state
+let isGamePlaying = false
+
+
+
 // * Game Grid element
 const grid = document.querySelector('.grid')
 //* Width of a row
@@ -6,10 +11,6 @@ const width = 23
 const cells = []
 //* Initial alien movement direction set to left
 let direction = 1
-//* Initial game state
-let isGamePlaying = false
-
-
 
 
 
@@ -26,9 +27,11 @@ startButton.addEventListener('click', () => {
 
 
 
-//*Start Game styling
-startButton.addEventListener('mou')
-
+if (isGamePlaying === false) {
+  startButton.innerHTML = 'Start Game'
+  document.getElementById('menu').style.border = '5px solid white'
+  document.getElementById('menu').style.padding = '50px '
+}
 
 
 
@@ -36,6 +39,10 @@ startButton.addEventListener('mou')
 function startGame() {
   isGamePlaying = true
   startButton.innerHTML = ''
+  document.getElementById('menu').style.border = ''
+  document.getElementById('menu').style.padding = ''
+
+
 
 
   //* Score and lives tracker
@@ -43,7 +50,7 @@ function startGame() {
   const scoreTracker = document.querySelector('#score-tracker')
   let lives = 3
   const livesTracker = document.querySelector('#lives-tracker')
-  
+
 
 
 
@@ -53,6 +60,7 @@ function startGame() {
 
 
 
+  
   //* Player starting position 
   let player = 517
   // //* Player projectile starting position is the same as players 
@@ -153,6 +161,7 @@ function startGame() {
 
     const leftWall = aliens[0] % width === 0
     const rightWall = aliens[12] % width === width - 1
+    //! write out wall hit logic
 
     if ((leftWall && direction === - 1) || (rightWall && direction === 1)) {
       direction = width
@@ -170,7 +179,7 @@ function startGame() {
     for (let i = 0; i <= aliens.length - 1; i++) {
       cells[aliens[i]].classList.add('alien')
     }
-  //? Alien movement speed
+    //? Alien movement speed
   }, 500)//800
 
 
@@ -208,7 +217,7 @@ function startGame() {
           alienBangInitiated = false
 
         }
-      //? Alien projectile speed  
+        //? Alien projectile speed  
       }, 40)
     }
 
@@ -221,19 +230,42 @@ function startGame() {
       isGamePlaying = false
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
-      resultText.innerHTML = 'You Lose!'
+
+      startButton.innerHTML = 'You Lose!'
+      document.getElementById('menu').style.border = '5px solid white'
+      document.getElementById('menu').style.padding = '50px '
+      document.getElementById('menu').style.backgroundColor = 'black'
+      startButton.addEventListener('click', () => {
+        newGame()
+      })
+      resultText.innerHTML = 'Click to play again.'
+      resultText.addEventListener('click', () => {
+        newGame()
+      })
     }
-    if (aliens.length === 0 ) {
+    if (aliens.length === 0) {
       isGamePlaying = false
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
-      resultText.innerHTML = 'You Win!'
+
+      startButton.innerHTML = 'You Win!'
+      startButton.addEventListener('click', () => {
+        newGame()
+      })
+      document.getElementById('menu').style.border = '5px solid white'
+      document.getElementById('menu').style.padding = '50px '
+      document.getElementById('menu').style.backgroundColor = 'black'
+
+      resultText.innerHTML = 'Click to play again.'
+      resultText.addEventListener('click', () => {
+        newGame()
+      })
+
     }
 
   }
 
+  function newGame() {
+    location.reload()
+  }
 }
-
-
-
-
