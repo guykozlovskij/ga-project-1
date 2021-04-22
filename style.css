@@ -73,7 +73,7 @@ button {
   background-color: black;
   display: flex;
   flex-direction: row;
-  width: 800px;
+  width: 770px;
   height: 600px;
   flex-wrap: wrap;
   border: 15px solid white;
@@ -89,6 +89,15 @@ button {
 div {
   font-size: 9px;
 }
+
+
+.mothership{
+  background-image: url('./img/mothership.jpg');
+  background-size: contain;
+  background-position: center;
+}
+  /* background-color: red; */
+
 
 .player {
   background-image: url('./img/ship.png');
