@@ -83,7 +83,7 @@ div {
 }
 
 .player {
-  background-image: url('/img/ship.png');
+  background-image: url('./img/ship.png');
   background-size: contain;
   background-position: center;
 }
@@ -95,13 +95,13 @@ div {
 }
 
 .alien-projectile {
-  background-image: url('/img/bomb.png');
+  background-image: url('./img/bomb.png');
   background-size: contain;
   background-position: center;
 }
 
 .alien {
-  background-image: url('/img/alien.png');
+  background-image: url('./img/alien.png');
   background-size: contain;
   background-position: center;
 }
