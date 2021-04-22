@@ -13,10 +13,36 @@ body {
   margin: 0;
 }
 
-#menu {
+#menu, #end-card {
   font-size: 50px;
   position: absolute;
-  margin-top: 300px;
+  margin-top: 270px;
+
+
+  
+}
+
+#menu:hover {
+  color: rgb(0, 255, 0);
+}
+#end-card:hover {
+  color: rgb(0, 255, 0);
+}
+
+#controls {
+  font-size: 30px;
+  position: absolute;
+  margin-top: 500px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0px;
+  
+}
+
+.control-keys{
+  padding: 0px;
+  margin: 5px;
 }
 
 h1 {
@@ -48,19 +74,16 @@ main {
   justify-content: space-between; 
 }
 
-button {
-  height: 60px;
-  width: 130px;
-  font-size: 40px;
-}
 
 #lives-tracker {
   font-size: 40px;
 }
 
+
 #score-tracker {
   font-size: 30px;
 }
+
 
 #win-lose {
   padding-top: 0px;
@@ -68,6 +91,7 @@ button {
   font-size: 40px;
   color: rgb(0, 255, 0);
 }
+
 
 .grid {
   background-color: black;
@@ -79,12 +103,14 @@ button {
   border: 15px solid white;
 }
 
+
 .grid div {
   width: 30%;
   height: 30%;
   color: white;
   border: 0.5px solid black;
 }
+
 
 div {
   font-size: 9px;

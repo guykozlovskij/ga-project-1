@@ -41,6 +41,13 @@ function startGame() {
   startButton.innerHTML = ''
   document.getElementById('menu').style.border = ''
   document.getElementById('menu').style.padding = ''
+  const aKey = document.querySelector('#a-key')
+  aKey.innerHTML = ''
+  const dKey = document.querySelector('#d-key')
+  dKey.innerHTML = ''
+  const wKey = document.querySelector('#w-key')
+  wKey.innerHTML = ''
+  
 
 
 
@@ -50,7 +57,6 @@ function startGame() {
   const scoreTracker = document.querySelector('#score-tracker')
   let lives = 3
   const livesTracker = document.querySelector('#lives-tracker')
-  const resultText = document.querySelector('#win-lose')
 
 
 
@@ -62,7 +68,7 @@ function startGame() {
   //* Array of aliens
   let aliens = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150]
   //* Mothership starting position
-  let mothership = 22
+  // let mothership = 22
 
 
 
@@ -138,14 +144,14 @@ function startGame() {
             //? Updates the score
             score += 10
             scoreTracker.innerHTML = `Score: ${score}`
-            cells[playerProjectile].classList.remove('projectile')
-            cells[playerProjectile].classList.remove('mothership')
+
           }
-          if (cells[playerProjectile].classList.contains('mothership')) {
-            //? Updates the score
-            score += 100
-            scoreTracker.innerHTML = `Score: ${score}`
-          }
+          // if (cells[playerProjectile].classList.contains('mothership')) {
+          //   score += 100
+          //   scoreTracker.innerHTML = `Score: ${score}`
+          //   cells[playerProjectile].classList.remove('projectile')
+          //   cells[playerProjectile].classList.remove('mothership')
+          // }
         } else {
           cells[playerProjectile].classList.remove('projectile')
           cells[playerProjectile].classList.remove('alien')
@@ -230,7 +236,7 @@ function startGame() {
     }
 
 
-
+    // let monthershipMovesID
 
     // const mothershipID = setInterval(() => {
     //   motherShipMoves()
@@ -242,7 +248,7 @@ function startGame() {
     //   if (mothershipInitiated === false) {
     //     mothershipInitiated = true
     //   }
-    //   const monthershipMovesID = setInterval(() => {
+    //   monthershipMovesID = setInterval(() => {
     //     if (mothership < 45) {
     //       cells[mothership].classList.remove('mothership')
     //       mothership = mothership + 1
@@ -255,6 +261,7 @@ function startGame() {
 
     //   }, 2000)
     // }
+    const endCard = document.querySelector('#end-card')
 
 
 
@@ -267,37 +274,28 @@ function startGame() {
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
 
-      startButton.innerHTML = 'You Lose!'
-      document.getElementById('menu').style.border = '3px solid white'
-      document.getElementById('menu').style.padding = '50px '
-      document.getElementById('menu').style.backgroundColor = 'black'
-      startButton.addEventListener('click', () => {
-        newGame()
-      })
-      resultText.innerHTML = 'Click to PLAY again.'
-      resultText.addEventListener('click', () => {
+      endCard.innerHTML = 'You Lose! Click to play again.'
+      document.getElementById('end-card').style.border = '3px solid white'
+      document.getElementById('end-card').style.padding = '30px '
+      document.getElementById('end-card').style.backgroundColor = 'black'
+      endCard.addEventListener('click', () => {
         newGame()
       })
     }
+
     if (aliens.length === 0) {
       isGamePlaying = false
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
-      clearInterval(mothershipID)
+      // clearInterval(mothershipID)
 
-      startButton.innerHTML = 'You Win!'
-      startButton.addEventListener('click', () => {
+      endCard.innerHTML = 'You Lose! Click to PLAY again.'
+      endCard.addEventListener('click', () => {
         newGame()
       })
-      document.getElementById('menu').style.border = '3px solid white'
-      document.getElementById('menu').style.padding = '50px '
-      document.getElementById('menu').style.backgroundColor = 'black'
-
-      resultText.innerHTML = 'Click to play again.'
-      resultText.addEventListener('click', () => {
-        newGame()
-      })
-
+      document.getElementById('end-card').style.border = '3px solid white'
+      document.getElementById('end-card').style.padding = '50px '
+      document.getElementById('end-card').style.backgroundColor = 'black'
     }
 
   }
