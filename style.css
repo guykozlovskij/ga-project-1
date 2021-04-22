@@ -13,6 +13,11 @@ body {
   margin: 0;
 }
 
+#menu {
+  font-size: 80px;
+  position: absolute;
+  margin-top: 500px;
+}
 
 h1 {
   font-size: 60px;
@@ -22,18 +27,38 @@ h1 {
 }
 
 .title-card{
-  padding-left: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
 main {
+
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap; 
+  width: 800px;
+  align-items: center;
+  justify-content: space-between; 
 }
 
+button {
+  height: 60px;
+  width: 130px;
+  font-size: 40px;
+}
 
 #lives-tracker {
   font-size: 40px;
+}
+
+#score-tracker {
+  font-size: 30px;
+}
+
+#win-lose {
+  font-size: 30px;
 }
 
 .grid {
@@ -49,6 +74,7 @@ main {
 .grid div {
   width: 30%;
   height: 30%;
+  color: white;
   border: 0.5px solid black;
 }
 

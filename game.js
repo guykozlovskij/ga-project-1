@@ -16,7 +16,7 @@ let isGamePlaying = false
 
 
 //* Starts the game
-const startButton = document.querySelector('#start')
+const startButton = document.querySelector('#menu')
 startButton.addEventListener('click', () => {
   if (isGamePlaying === false) {
     startGame()
@@ -26,12 +26,16 @@ startButton.addEventListener('click', () => {
 
 
 
+//*Start Game styling
+startButton.addEventListener('mou')
+
 
 
 
 
 function startGame() {
   isGamePlaying = true
+  startButton.innerHTML = ''
 
 
   //* Score and lives tracker
@@ -134,7 +138,7 @@ function startGame() {
           clearInterval(intervalID)
           bangInitiated = false
           //? Updates the score
-          score += 100
+          score += 10
           scoreTracker.innerHTML = `Score: ${score}`
         }
       }, 30)
