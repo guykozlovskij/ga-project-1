@@ -274,9 +274,9 @@ function startGame() {
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
 
-      endCard.innerHTML = 'You Lose! Click to play again.'
+      endCard.innerHTML = 'You Lose! Click to PLAY again.'
       document.getElementById('end-card').style.border = '3px solid white'
-      document.getElementById('end-card').style.padding = '30px '
+      document.getElementById('end-card').style.padding = '20px '
       document.getElementById('end-card').style.backgroundColor = 'black'
       endCard.addEventListener('click', () => {
         newGame()
@@ -289,12 +289,12 @@ function startGame() {
       clearInterval(alienShootID)
       // clearInterval(mothershipID)
 
-      endCard.innerHTML = 'You Lose! Click to PLAY again.'
+      endCard.innerHTML = 'You WIN! Click to PLAY again.'
       endCard.addEventListener('click', () => {
         newGame()
       })
       document.getElementById('end-card').style.border = '3px solid white'
-      document.getElementById('end-card').style.padding = '50px '
+      document.getElementById('end-card').style.padding = '20px '
       document.getElementById('end-card').style.backgroundColor = 'black'
     }
 
