@@ -1,4 +1,4 @@
-![GA LOGO](/img/ga_logo.png) 
+![GA LOGO](./img/ga_logo.png) 
 
 ### General Assembly, Software Engineering Immersive 
 
@@ -41,14 +41,14 @@ Click [here](https://guykozlovskij.github.io/project-1/) to play the game.
 The game is built on a 23 x 23 grid generated from HTML divs using a  JavaScript **for** loop which appends the divs as children of the grid. 
 
 ```js
-// The grid element
+//* The grid element
 const grid = document.querySelector('.grid')
-// Width of a single row
+//* Width of a single row
 const width = 23
-// An array of cells
+//* An array of cells
 const cells = []
 
-// Grid generated here
+//* Grid generated here
  for (let index = 0; index < width ** 2; index++) {
     const div = document.createElement('div')
     grid.appendChild(div)
@@ -57,3 +57,24 @@ const cells = []
     cells.push(div)
   }
 ```
+
+![](/img/readme_images/grid_display.png)
+
+*(Grid is highlighted for demonstration purposes and is not visible in-game.)*
+
+### The Player 
+
+The player is a variable defined with a number, which defines the position on the grid: 
+
+```js
+//* Player starting position 
+  let player = 517
+```
+
+Player is the visualised by adding a corresponding sprite via a CSS **.class**.
+
+```js
+//* Adds Player to the Grid
+  cells[player].classList.add('player')
+```
+
