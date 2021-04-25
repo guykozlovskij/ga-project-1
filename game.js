@@ -4,11 +4,11 @@ let isGamePlaying = false
 
 
 
-// * Game Grid element
+// * The grid element
 const grid = document.querySelector('.grid')
-//* Width of a row
+//* Width of a single row
 const width = 23
-//* Array of cells
+//* An array of cells
 const cells = []
 //* Initial alien movement direction set to left
 let direction = 1
@@ -72,7 +72,7 @@ function startGame() {
 
 
 
-  //* The Grid
+  //* Grid generated here
   for (let index = 0; index < width ** 2; index++) {
     const div = document.createElement('div')
     grid.appendChild(div)
