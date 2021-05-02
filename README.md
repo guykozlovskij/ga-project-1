@@ -23,7 +23,7 @@ You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/p
   * [The Grid](#grid)
   * [The Player](#player)
     * [Player Movement](#player-movement)
-    * [Player {rojectile](#player-shooting)
+    * [Player projectile](#player-shooting)
   * [Aliens](#aliens)
     * [Alien Wall Collision](#alien-wall)
     * [Alien Projectiles](#alien-shooting)
