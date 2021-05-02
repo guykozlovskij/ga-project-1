@@ -47,7 +47,7 @@ function startGame() {
   dKey.innerHTML = ''
   const wKey = document.querySelector('#w-key')
   wKey.innerHTML = ''
-  
+
 
 
 
@@ -68,7 +68,6 @@ function startGame() {
   //* Array of aliens
   let aliens = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150]
   //* Mothership starting position
-  // let mothership = 22
 
 
 
@@ -125,10 +124,10 @@ function startGame() {
 
 
 
-  //* Player projectile code
+  //* Player projectile initiation value
   let bangInitiated = false
 
-  //? Allows only one projectile at a time on screen
+  //? Allows only one projectile at a time on the screen
   function bang() {
     if (bangInitiated === false) {
       bangInitiated = true
@@ -144,14 +143,7 @@ function startGame() {
             //? Updates the score
             score += 10
             scoreTracker.innerHTML = `Score: ${score}`
-
           }
-          // if (cells[playerProjectile].classList.contains('mothership')) {
-          //   score += 100
-          //   scoreTracker.innerHTML = `Score: ${score}`
-          //   cells[playerProjectile].classList.remove('projectile')
-          //   cells[playerProjectile].classList.remove('mothership')
-          // }
         } else {
           cells[playerProjectile].classList.remove('projectile')
           cells[playerProjectile].classList.remove('alien')
@@ -161,7 +153,6 @@ function startGame() {
           })
           clearInterval(intervalID)
           bangInitiated = false
-
         }
       }, 30)
     }
@@ -236,35 +227,9 @@ function startGame() {
     }
 
 
-    // let monthershipMovesID
 
-    // const mothershipID = setInterval(() => {
-    //   motherShipMoves()
-    // }, 15000)
 
-    // let mothershipInitiated = false
-
-    // function motherShipMoves() {
-    //   if (mothershipInitiated === false) {
-    //     mothershipInitiated = true
-    //   }
-    //   monthershipMovesID = setInterval(() => {
-    //     if (mothership < 45) {
-    //       cells[mothership].classList.remove('mothership')
-    //       mothership = mothership + 1
-    //       cells[mothership].classList.add('mothership')
-    //     } else {
-    //       cells[mothership].classList.remove('mothership')
-    //       clearInterval(monthershipMovesID)
-    //       mothershipInitiated = false
-    //     }
-
-    //   }, 2000)
-    // }
     const endCard = document.querySelector('#end-card')
-
-
-
 
     //* Winning - Loosing 
     const aliensLanded = aliens.some(alienID => alienID > 500)
@@ -287,7 +252,6 @@ function startGame() {
       isGamePlaying = false
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
-      // clearInterval(mothershipID)
 
       endCard.innerHTML = 'You WIN! Click to PLAY again.'
       endCard.addEventListener('click', () => {
@@ -297,10 +261,13 @@ function startGame() {
       document.getElementById('end-card').style.padding = '20px '
       document.getElementById('end-card').style.backgroundColor = 'black'
     }
-
   }
+
+
+
 
   function newGame() {
     location.reload()
   }
 }
+
