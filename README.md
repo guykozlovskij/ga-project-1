@@ -10,9 +10,9 @@
 
 The goal of the project was to create a grid-based game rendered in the browser using 'vanilla' JavaScript, HTML and CSS. The project was to be completed individually within one week.
 
-Having been given a choice of possible games to work on, I have gone with _Space Invaders_. I picked this particular game as I felt it was just within the reach of my comfort zone in relation to my knowledge, but difficult enough to push me to reach further and cleverly utilize the skills I have had so far.
+Having been given a choice of possible games to work on, I have chosen  _Space Invaders_. I picked this particular game as I felt it was just within the reach of my comfort zone in relation to my knowledge, but difficult enough to push me to reach further and cleverly utilize the skills I had obtained.
 
-My goal was to emulate to original game-feel and ensure the game is challenging and fun to play.
+My goal was to emulate the original game-feel and ensure the game is challenging and fun to play.
 
 You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/project-1/).
 
@@ -23,7 +23,7 @@ You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/p
   * [The Grid](#grid)
   * [The Player](#player)
     * [Player Movement](#player-movement)
-    * [Player projectile](#player-shooting)
+    * [Player Projectile](#player-shooting)
   * [Aliens](#aliens)
     * [Alien Wall Collision](#alien-wall)
     * [Alien Projectiles](#alien-shooting)
@@ -92,14 +92,14 @@ const cells = []
 
 ![](/img/readme_images/player.png)
 
-The player is a variable defined with a number, which defines the position on the grid: 
+The player is a variable defined with a number, which defines its position on the grid: 
 
 ```js
 //* Player starting position 
   let player = 517
 ```
 
-Player is the visualised by adding a corresponding sprite via a CSS **.class**.
+Player is then visualised by adding a corresponding sprite via a CSS **.class**.
 
 ```js
 //* Adds Player to the Grid
@@ -108,7 +108,7 @@ Player is the visualised by adding a corresponding sprite via a CSS **.class**.
 
 <a name="player-movement"></a>
 
-**Player movement** is regulated by an event listener that checks for a `keydown` event on the user's keyboard. The wall detection logic is written to be relative to the players position. Per single `keydown` player is moved either left or right by one cell by incrementing or decreasing the player value and then removing the sprite class in one cell and immediately adding in the following. This logic of removing class, incrementing value and adding class is used through all elements on the grid to create movement. 
+**Player movement** is regulated by an event listener that checks for a `keydown` event on the user's keyboard. The wall detection logic is written to detect collision relative to the players position. Player is moved either left or right by one cell per single `keydown` event by incrementing or decreasing the player value and then removing the sprite class in the current cell and immediately adding in the following one. This logic of removing class, incrementing value and adding class is used through all elements on the grid to create movement. 
 
 ```js
   //* Player movement and shoting
@@ -131,7 +131,7 @@ Player is the visualised by adding a corresponding sprite via a CSS **.class**.
 ```
 <a name="player-shooting"></a>
 
-**Player projectile** is fired when a specific `keydown` is detected and a function is is called.
+**Player projectile** is fired when a specific `keydown` is detected and a function is called.
 
 ```js
   //? Projectile fire
@@ -201,7 +201,7 @@ They are then added to the grid using a `forEach` statement:
 ```
 <a name="alien-wall"></a>
 
-**Alien wall collision** is written in a similar fashion to the players' collision, with the difference being us measuring a whole array of objects, rather that a single one. I opted out to have the first and the last objects in the array as the measuring points, checking if they are divisible by the width.
+**Alien wall collision** is written in a similar fashion to the players' collision, with the difference being us measuring a whole array of objects, rather than a single one. I opted out to have the first and the last objects in the array as the measuring points, checking if they are divisible by the `width`.
 ```js
  //* Alien movement
   const alienMovementID = setInterval(() => {
@@ -260,23 +260,23 @@ const alienBangID = setInterval(() => {
 ## Challenges
 This was my very first front-end JavaScript project which utilized all the things I have learned so far in the immersive course. Starting from a completely empty canvas and building the application from scratch was challenging but also emboldening. 
 
-The Alien movement posed the biggest challenge in the project. It was something I had to spend most of the time as it took me a while to think of the best way of them interacting with the walls and move down upon contact **as a group**. 
+The Alien movement posed the biggest challenge in the project. It was something I had to spend most of my time on as it took me a while to think of the best way of them interacting with the walls and move down upon contact **as a group**. 
 
 The second-biggest challenge was implementing a correct way of updating the alien array once an alien has been hit by a projectile. This was due to my initial approach of just removing a class of a single alien, rather than updating the array.
 
 <a name="victories"></a>
 
 ## Victories
-I am very happy with the look and feel of the game. Although it may seem simple, the simplistic Atari-esque retro look and feel is exactly what I was striving for. Additionally, the speed and difficulty of the game is something I considered to be really important, it is a game after all. Regardless of this being a very simple project I wanted the game to be fun to play, and I believe I have managed to achieve that. 
+I am very happy with the look and feel of the game. Although it may seem simple, the simplistic Atari-esque retro look and feel is exactly what I was striving for. Additionally, the speed and difficulty of the game is something I considered to be really important, as it is a game after all. Regardless of this being a very simple project I wanted the game to be fun to play, and I believe I have managed to achieve that. 
 
-Since I  have completed this project without much guidance from the instructors I have felt very motivated and empowered to continue my journey of learning to code with much anticipation and excitement. 
+Since I  have completed this project without much guidance from the instructors I feel very motivated and empowered to continue my journey of learning to code with much anticipation and excitement. 
 
 <a name="lessons"></a>
 
 ## Lessons Learned 
-This project has truly highlighted to me the importance of thinking ahead. I have encountered a few moments where some careless commitments early on have rippled down the line by the end of the project. This has made refactoring difficult and if I were to do this project ahead I would have to spend more time whiteboarding and planning out the development steps in more detail.
+This project has truly highlighted to me the importance of thinking ahead. I have encountered a few moments where some careless commitments early on have rippled down the line by the end of the project. This has made refactoring difficult and if I were to do this project again I would spend more time whiteboarding and planning out the development steps in more detail.
 
-Additionally, I now understand the importance of a clean and organized codes and good comments. The bigger the project gets the more easy it is to start loosing track of things. In all my future projects I will be doing my best to better follow the KISS and DRY code principles. 
+Additionally, I now understand the importance of a clean and organized code and good comments. The bigger the project gets the more easy it is to start losing track of things. In all my future projects I will be doing my best to better follow the KISS and DRY code principles. 
 
 <a name="future"></a>
 
