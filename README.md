@@ -18,7 +18,19 @@ You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/p
 
 ## Table of contents 
 * [The Brief](#brief)
-* [The Player](#player)
+  * [Technologies Used](#tech)
+  * [The Approach](#approach)
+  * [The Grid](#grid)
+  * [The Player](#player)
+    * [Player Movement](#player-movement)
+    * [Player {rojectile](#player-shooting)
+  * [Aliens](#aliens)
+    * [Alien Wall Collision](#alien-wall)
+    * [Alien Projectiles](#alien-shooting)
+* [Challenges](#challenges)
+* [Victories](#Victories)
+* [Lessons Learned](#lessons)
+* [Potential Future Features](#future)
 
 
 <a name="brief"></a>
@@ -187,7 +199,7 @@ They are then added to the grid using a `forEach` statement:
     cells[alien].classList.add('alien')
   })
 ```
-<a name="alien-movement"></a>
+<a name="alien-wall"></a>
 
 **Alien wall collision** is written in a similar fashion to the players' collision, with the difference being us measuring a whole array of objects, rather that a single one. I opted out to have the first and the last objects in the array as the measuring points, checking if they are divisible by the width.
 ```js
@@ -210,6 +222,7 @@ They are then added to the grid using a `forEach` statement:
   
   }, 500)//800
 ```
+<a name="alien-shooting"></a>
 
 ## Alien Projectiles
 
@@ -242,6 +255,7 @@ const alienBangID = setInterval(() => {
         //? Alien projectile speed  
       }, 40)
 ```
+<a name="challenges"></a>
 
 ## Challenges
 This was my very first front-end JavaScript project which utilized all the things I have learned so far in the immersive course. Starting from a completely empty canvas and building the application from scratch was challenging but also emboldening. 
@@ -250,16 +264,22 @@ The Alien movement posed the biggest challenge in the project. It was something 
 
 The second-biggest challenge was implementing a correct way of updating the alien array once an alien has been hit by a projectile. This was due to my initial approach of just removing a class of a single alien, rather than updating the array.
 
+<a name="victories"></a>
+
 ## Victories
 I am very happy with the look and feel of the game. Although it may seem simple, the simplistic Atari-esque retro look and feel is exactly what I was striving for. Additionally, the speed and difficulty of the game is something I considered to be really important, it is a game after all. Regardless of this being a very simple project I wanted the game to be fun to play, and I believe I have managed to achieve that. 
 
 Since I  have completed this project without much guidance from the instructors I have felt very motivated and empowered to continue my journey of learning to code with much anticipation and excitement. 
 
-## Lessons learned 
+<a name="lessons"></a>
+
+## Lessons Learned 
 This project has truly highlighted to me the importance of thinking ahead. I have encountered a few moments where some careless commitments early on have rippled down the line by the end of the project. This has made refactoring difficult and if I were to do this project ahead I would have to spend more time whiteboarding and planning out the development steps in more detail.
 
 Additionally, I now understand the importance of a clean and organized codes and good comments. The bigger the project gets the more easy it is to start loosing track of things. In all my future projects I will be doing my best to better follow the KISS and DRY code principles. 
 
-## Potential future features 
+<a name="future"></a>
+
+## Potential Future Features 
 - Refactoring the movement and shooting mechanics
 - More accurately emulate the original game: i.e. sounds, destructible cover, alien mothership, high-score tracking. 
