@@ -97,7 +97,7 @@ function startGame() {
 
 
 
-  //* Player movement and shoting
+  //* Player movement and shooting
   document.addEventListener('keydown', (event) => {
     const key = event.key
 

@@ -99,7 +99,7 @@ The player is a variable defined with a number, which defines its position on th
   let player = 517
 ```
 
-Player is then visualised by adding a corresponding sprite via a CSS **.class**.
+Player is then visualized by adding a corresponding sprite via a CSS **.class**.
 
 ```js
 //* Adds Player to the Grid
@@ -111,7 +111,7 @@ Player is then visualised by adding a corresponding sprite via a CSS **.class**.
 **Player movement** is regulated by an event listener that checks for a `keydown` event on the user's keyboard. The wall detection logic is written to detect collision relative to the players position. Player is moved either left or right by one cell per single `keydown` event by incrementing or decreasing the player value and then removing the sprite class in the current cell and immediately adding in the following one. This logic of removing class, incrementing value and adding class is used through all elements on the grid to create movement. 
 
 ```js
-  //* Player movement and shoting
+  //* Player movement and shooting
   document.addEventListener('keydown', (event) => {
     const key = event.key
 
