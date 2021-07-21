@@ -83,14 +83,14 @@ const cells = []
   }
 ```
 
-![](/img/readme_images/grid_display.png)
+<img src="img/readme_images/grid_display.png" alt="grid invaders" />
 
 *(Grid is highlighted for demonstration purposes and is not visible in-game.)*
 
 <a name="player"></a>
 ### The Player 
 
-![](/img/readme_images/player.png)
+<img src="img/readme_images/player.png" alt="player image" />
 
 The player is a variable defined with a number, which defines its position on the grid: 
 
@@ -183,7 +183,7 @@ Once an enemy class is found the enemy and the projectile will be removed and th
 
 ### The Aliens
 
-![](/img/readme_images/aliens.png)
+<img src="img/readme_images/aliens.png" alt="aliens image" />
 
 Enemy ships are defined as an array of numbers which corresponds to their position on the grid:
 
