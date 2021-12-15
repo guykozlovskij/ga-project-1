@@ -9,7 +9,8 @@ const grid = document.querySelector('.grid')
 //* Width of a single row
 const width = 23
 //* An array of cells
-const cells = []
+const cells: any = []
+console.log('here', cells)
 //* Initial alien movement direction set to left
 let direction = 1
 
@@ -19,7 +20,7 @@ let direction = 1
 //* Starts the game
 const startButton = document.querySelector('#menu')
 startButton.addEventListener('click', () => {
-  if (isGamePlaying === false) {
+  if (!isGamePlaying) {
     startGame()
   }
 })
@@ -27,8 +28,8 @@ startButton.addEventListener('click', () => {
 
 
 
-if (isGamePlaying === false) {
-  startButton.innerHTML = 'Start Game'
+if (!isGamePlaying) {
+  startButton.innerHTML = 'Start Game (TS!)'
   document.getElementById('menu').style.border = '3px solid white'
   document.getElementById('menu').style.padding = '50px '
 }
@@ -108,7 +109,7 @@ function startGame() {
       cells[player].classList.add('player')
     }
 
-    //? Movement to the rigth 
+    //? Movement to the right
     if (key === 'd' && !(player % width === width - 1)) {
       cells[player].classList.remove('player')
       player += 1
