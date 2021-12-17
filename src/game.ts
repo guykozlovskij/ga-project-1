@@ -18,7 +18,7 @@ let direction = 1
 
 
 //* Starts the game
-const startButton = document.querySelector('#menu')
+const startButton = document.querySelector('#menu')!
 startButton.addEventListener('click', () => {
   if (!isGamePlaying) {
     startGame()
@@ -30,8 +30,8 @@ startButton.addEventListener('click', () => {
 
 if (!isGamePlaying) {
   startButton.innerHTML = 'Start Game (TS!)'
-  document.getElementById('menu').style.border = '3px solid white'
-  document.getElementById('menu').style.padding = '50px '
+  document.getElementById('menu')!.style.border = '3px solid white'
+  document.getElementById('menu')!.style.padding = '50px '
 }
 
 
@@ -40,14 +40,14 @@ if (!isGamePlaying) {
 function startGame() {
   isGamePlaying = true
   startButton.innerHTML = ''
-  document.getElementById('menu').style.border = ''
-  document.getElementById('menu').style.padding = ''
+  document.getElementById('menu')!.style.border = ''
+  document.getElementById('menu')!.style.padding = ''
   const aKey = document.querySelector('#a-key')
-  aKey.innerHTML = ''
+  aKey!.innerHTML = ''
   const dKey = document.querySelector('#d-key')
-  dKey.innerHTML = ''
+  dKey!.innerHTML = ''
   const wKey = document.querySelector('#w-key')
-  wKey.innerHTML = ''
+  wKey!.innerHTML = ''
 
 
 
@@ -75,7 +75,7 @@ function startGame() {
   //* Grid generated here
   for (let index = 0; index < width ** 2; index++) {
     const div = document.createElement('div')
-    grid.appendChild(div)
+    grid!.appendChild(div)
     //! to be updated ------------------------------------------------------------------------
     // div.innerHTML = index
     //! to be updated ------------------------------------------------------------------------
@@ -143,7 +143,7 @@ function startGame() {
           if (cells[playerProjectile].classList.contains('alien')) {
             //? Updates the score
             score += 10
-            scoreTracker.innerHTML = `Score: ${score}`
+            scoreTracker!.innerHTML = `Score: ${score}`
           }
         } else {
           cells[playerProjectile].classList.remove('projectile')
@@ -191,7 +191,7 @@ function startGame() {
 
 
 
-  //* Alines shooting speed 
+  //* Aliens shooting speed
   const alienShootID = setInterval(() => {
     alienBang()
   }, 800)
@@ -216,7 +216,7 @@ function startGame() {
           cells[alienProjectile].classList.add('alien-projectile')
           if (cells[player].classList.contains('alien-projectile')) {
             lives -= 1
-            livesTracker.innerHTML = (`Lives: ${lives}`)
+            livesTracker!.innerHTML = (`Lives: ${lives}`)
           }
         } else {
           clearInterval(alienBangID)
@@ -240,11 +240,11 @@ function startGame() {
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
 
-      endCard.innerHTML = 'You Lose! Click to PLAY again.'
-      document.getElementById('end-card').style.border = '3px solid white'
-      document.getElementById('end-card').style.padding = '20px '
-      document.getElementById('end-card').style.backgroundColor = 'black'
-      endCard.addEventListener('click', () => {
+      endCard!.innerHTML = 'You Lose! Click to PLAY again.'
+      document.getElementById('end-card')!.style.border = '3px solid white'
+      document.getElementById('end-card')!.style.padding = '20px '
+      document.getElementById('end-card')!.style.backgroundColor = 'black'
+      endCard!.addEventListener('click', () => {
         newGame()
       })
     }
@@ -254,13 +254,13 @@ function startGame() {
       clearInterval(alienMovementID)
       clearInterval(alienShootID)
 
-      endCard.innerHTML = 'You WIN! Click to PLAY again.'
-      endCard.addEventListener('click', () => {
+      endCard!.innerHTML = 'You WIN! Click to PLAY again.'
+      endCard!.addEventListener('click', () => {
         newGame()
       })
-      document.getElementById('end-card').style.border = '3px solid white'
-      document.getElementById('end-card').style.padding = '20px '
-      document.getElementById('end-card').style.backgroundColor = 'black'
+      document.getElementById('end-card')!.style.border = '3px solid white'
+      document.getElementById('end-card')!.style.padding = '20px '
+      document.getElementById('end-card')!.style.backgroundColor = 'black'
     }
   }
 
