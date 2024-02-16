@@ -18,7 +18,7 @@ startButton.addEventListener('click', function () {
     }
 });
 if (!isGamePlaying) {
-    startButton.innerHTML = 'Start Game (TS!)';
+    startButton.innerHTML = 'Start Game';
     document.getElementById('menu').style.border = '3px solid white';
     document.getElementById('menu').style.padding = '50px ';
 }
@@ -174,7 +174,7 @@ function startGame() {
             isGamePlaying = false;
             clearInterval(alienMovementID);
             clearInterval(alienShootID);
-            endCard.innerHTML = 'You Lose! Click to PLAY again.';
+            endCard.innerHTML = 'Game Over! Click to PLAY again.';
             document.getElementById('end-card').style.border = '3px solid white';
             document.getElementById('end-card').style.padding = '20px ';
             document.getElementById('end-card').style.backgroundColor = 'black';
