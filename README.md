@@ -14,7 +14,7 @@ Having been given a choice of possible games to work on, I have chosen  _Space I
 
 My goal was to emulate the original game-feel and ensure the game is challenging and fun to play.
 
-You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/project-1/).
+You can launch the game on GitHub pages [here](https://guykozlovskij.github.io/ga-project-1/).
 
 ## Table of contents 
 * [The Brief](#brief)
